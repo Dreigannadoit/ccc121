@@ -1,0 +1,54 @@
+.sidebar{
+    position: fixed;
+    top: 0;
+    left: 2%;
+    background-color: aliceblue;
+    height: 100%;
+    width: 20%;
+}
+
+.sidebar nav{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    padding: 10%;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 5%;
+}
+
+header{
+    height: 15%;
+    width: 100%;
+    padding: 25px;
+    margin-top: 15px;
+}
+
+header>div{
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header>div .user{
+    height: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 20%;
+}
+
+header>div .user .user_img{
+    height: 50px;
+    width: 50px;
+    overflow: hidden;
+    border-radius: 100%;
+    background-color: antiquewhite;
+}
