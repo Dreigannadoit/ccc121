@@ -1,61 +1,80 @@
-/* Bordered form */
-.login form {
-  border: 3px solid #f1f1f1;
-}
-
-/* Full-width inputs */
-.login input[type=text],
-.login input[type=password] {
+.login_page{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
+  left: 0;
 }
 
-/* Set a style for all buttons */
-.login button {
-  background-color: #04AA6D;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
+
+.login{
+  height: 80%;
+  width: 70%;
+  background-color: #ffffff;
+
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+}
+
+.login_form{
+  height: 100%;
+  width: 45%;
+  padding: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.login_form form{
+  height: 100%;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
-/* Add a hover effect for buttons */
-.login button:hover {
-  opacity: 0.8;
+.login_form form h1{
+  font-size: 2.5rem;
+  margin-bottom: 20px;
 }
 
-/* Extra style for the cancel button (red) */
-.login .cancelbtn {
-  width: auto;
-  padding: 10px 18px;
-  background-color: #f44336;
+.login_form .container{
+  height: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 40px;
 }
 
-/* Center the avatar image inside this container */
-.login .imgcontainer {
-  text-align: center;
-  margin: 24px 0 12px 0;
+.login_form .container>div{
+  display: block;
+  height: 40px
 }
 
-/* Avatar image */
-.login img.avatar {
-  width: 40%;
-  border-radius: 50%;
+.login_form .container>div input{
+  border: 10px solid;
+  border-image-slice: 1;
+  border-width: 5px;
+  border-image-source: var(--yello-grad);
+  margin-top: 5px;
 }
 
-/* Add padding to containers */
-.login .container {
-  padding: 16px;
+.login_form .container button{
+  background: var(--violet-grad);
+  padding: 12px;
+  border-radius: 10px;
+  color: #ffffff;
+  margin-top: 20px;
 }
 
-/* The "Forgot password" text */
-.login span.psw {
-  float: right;
-  padding-top: 16px;
+.banner{
+  height: 100%;
+  width: 55%;
+  background-color: aqua;
 }

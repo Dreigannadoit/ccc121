@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import "../css/registration.css";
 
 const Registration = () => {
-
     // TODO: Connect to Databse Later
 
     const [formData, setFormData] = useState({ username: "", password: "" });
@@ -31,54 +30,55 @@ const Registration = () => {
     };
 
     return (
-        <div className="login">
-            <form onSubmit={handleSubmit}>
-                <div className="imgcontainer">
-                    <h1>Username: Hello</h1>
-                    <h1>Password: World</h1>
+        <section className="login_page">
+            <div className="login">
+                <div className="banner"></div>
+
+                <div className="login_form">
+                    <form onSubmit={handleSubmit}>
+                    
+                        <div className="welocme_text">
+                            <h1>Hello Again, 
+                                Welcome
+                            </h1>
+                        </div>
+                        <hr />
+                        <div className="container">
+                            <div className="username">
+
+                                <label htmlFor="uname">
+                                    <b>Username</b>
+                                </label>
+                                <input
+                                    type="text"
+                                    placeholder="Enter Username"
+                                    name="username"
+                                    value={formData.username}
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </div>
+
+                            <div className="password">
+                                <label htmlFor="psw">
+                                    <b>Password</b>
+                                </label>
+                                <input
+                                    type="password"
+                                    placeholder="Enter Password"
+                                    name="password"
+                                    value={formData.password}
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </div>
+
+                            <button type="submit">Login</button>
+                        </div>
+                    </form>
                 </div>
-
-                <div className="container">
-                    <label htmlFor="uname">
-                        <b>Username</b>
-                    </label>
-                    <input
-                        type="text"
-                        placeholder="Enter Username"
-                        name="username"
-                        value={formData.username}
-                        onChange={handleChange}
-                        required
-                    />
-
-                    <label htmlFor="psw">
-                        <b>Password</b>
-                    </label>
-                    <input
-                        type="password"
-                        placeholder="Enter Password"
-                        name="password"
-                        value={formData.password}
-                        onChange={handleChange}
-                        required
-                    />
-
-                    <button type="submit">Login</button>
-                    <label>
-                        <input type="checkbox" name="remember" /> Remember me
-                    </label>
-                </div>
-
-                <div className="container" style={{ backgroundColor: "#f1f1f1" }}>
-                    <button type="button" className="cancelbtn">
-                        Cancel
-                    </button>
-                    <span className="psw">
-                        Forgot <a href="#">password?</a>
-                    </span>
-                </div>
-            </form>
-        </div>
+            </div>
+        </section>
     );
 };
 
