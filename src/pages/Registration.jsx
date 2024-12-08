@@ -76,6 +76,9 @@ const Registration = () => {
                             <button type="submit">Login</button>
                         </div>
                     </form>
+
+                    <span>Username: <i>Hello</i></span>
+                    <span>Password: <i>World</i></span>
                 </div>
             </div>
         </section>

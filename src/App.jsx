@@ -10,16 +10,20 @@ import Navbar from "./components/Navbar";
 
 
 import './css/app.css'
+import AddBook from "./pages/AddBook";
+import AddUser from "./pages/AddUser";
 
 function App() {
   return (
     <BrowserRouter basename="/ccc121">
-      <ConditionalNavbar /> {/* Render Navbar conditionally */}
+      <ConditionalNavbar /> 
       <Routes>
         <Route path="/" element={<Registration />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/resources" element={<Resources />} />
+        <Route path="/resources/addbook" element={<AddBook />} />
         <Route path="/members" element={<Members />} />
+        <Route path="/members/adduser" element={<AddUser />} />
         <Route path="/borrow" element={<Borrow />} />
       </Routes>
     </BrowserRouter>

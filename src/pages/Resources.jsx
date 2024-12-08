@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback  } from "react";
 import Header from "../components/Header";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import "../css/resources.css";
 import { bookTestDatabase } from "../constants";
+import useScrollToTop from "../hooks/useScrollToTop";
 
 const Resources = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -16,17 +17,30 @@ const Resources = () => {
 
   // Sync URL with page state
   useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    setSearchQuery(params.get("search") || "");
-    setSelectedGenre(params.get("genre") || "");
-    setSelectedAvailability(params.get("availability") || "");
-    setCurrentPage(Number(params.get("page") || 1));
-  }, [location.search]);
+    const params = new URLSearchParams();
+    if (searchQuery) params.set("search", searchQuery);
+    if (selectedGenre) params.set("genre", selectedGenre);
+    if (selectedAvailability) params.set("availability", selectedAvailability);
+    params.set("page", currentPage);
+  
+    navigate(`?${params.toString()}`, { replace: true });
+  }, [searchQuery, selectedGenre, selectedAvailability, currentPage]);  
 
-  // Handle search input
-  const handleSearch = (e) => {
-    setSearchQuery(e.target.value);
+  const debounce = (func, delay) => {
+    let timer;
+    return (...args) => {
+      clearTimeout(timer);
+      timer = setTimeout(() => func(...args), delay);
+    };
   };
+  
+  const handleSearch = useCallback(
+    debounce((value) => {
+      setSearchQuery(value);
+      updateURL();
+    }, 300), // Adjust delay as needed
+    []
+  );
 
   // Update the URL when the filters or page changes
   const updateURL = () => {
@@ -69,9 +83,11 @@ const Resources = () => {
 
   // Handle page change
   const paginate = (pageNumber) => {
+    if (pageNumber === currentPage) return; // Prevent redundant updates
     setCurrentPage(pageNumber);
-    updateURL(); // Update the URL when the page changes
   };
+
+  useScrollToTop(); 
 
   return (
     <section className="resources">
@@ -111,9 +127,9 @@ const Resources = () => {
                   <h2>{book.author}</h2>
                   <p>#{book.bookid}</p>
 
-                  <div className="controllers">
-                    <button>Delete</button>
+                  <div className="crud_controlls">
                     <NavLink to={`/edit/${book.bookid}`}>Edit</NavLink>
+                    <button>Delete</button>
                   </div>
                 </div>
               </div>
